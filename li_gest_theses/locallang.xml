@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for extension 'li_gest_theses'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pi1_title">Managing Thesis/HDR</label>
+			<label index="pi1_plus_wiz_description">Add a thesis/HDR list</label>
+		</languageKey>
+		<languageKey index="fr" type="array">
+			<label index="pi1_title">Gestion de thèses/HDR</label>
+			<label index="pi1_plus_wiz_description">Ajouter une liste de thèses/HDR</label>
+		</languageKey>
+	</data>
+</T3locallang>
