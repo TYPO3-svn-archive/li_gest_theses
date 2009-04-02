@@ -10,7 +10,7 @@
 			<label index="pi1_plus_wiz_description">Add a thesis/HDR list</label>
 		</languageKey>
 		<languageKey index="fr" type="array">
-			<label index="pi1_title">Gestion de thèses/HDR</label>
+			<label index="pi1_title">Affichage de thèses/HDR</label>
 			<label index="pi1_plus_wiz_description">Ajouter une liste de thèses/HDR</label>
 		</languageKey>
 	</data>
