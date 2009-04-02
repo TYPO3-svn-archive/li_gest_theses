@@ -1,10 +1,13 @@
 <?php
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
+// ******************************************************************
+// Création du formulaire pour la table tx_ligesttheses_TheseHDR
+// ******************************************************************
 $TCA["tx_ligesttheses_TheseHDR"] = array (
 	"ctrl" => $TCA["tx_ligesttheses_TheseHDR"]["ctrl"],
 	"interface" => array (
-		"showRecordFieldList" => "hidden,Titre,Description,DateDebut,DateFin,Jury,Resultat,Type,idMembreLabo,Afficher_Dirige"
+		"showRecordFieldList" => "hidden,Titre,idMembreLabo,Type,Resume,DateDebut,DateSoutenance,Jury,Resultat,Financement,Afficher_Dirige, Afficher_Cotutelle"
 	),
 	"feInterface" => $TCA["tx_ligesttheses_TheseHDR"]["feInterface"],
 	"columns" => array (
@@ -24,17 +27,45 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 				"type" => "input",	
 				"size" => "30",	
 				"max" => "255",	
-				"eval" => "required,trim",
+				"eval" => "trim",
 			)
 		),
-		"Description" => Array (		
+		"idMembreLabo" => Array (		
 			"exclude" => 1,
 			'l10n_mode' => 'mergeIfNotBlank',
-			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.description",		
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.idmembrelabo",		
 			"config" => Array (
-				"type" => "text",
-				"cols" => "30",	
-				"rows" => "15",
+				"type" => "select",	
+				"foreign_table" => "tx_ligestmembrelabo_MembreDuLabo",	
+				"foreign_table_where" => "ORDER BY tx_ligestmembrelabo_MembreDuLabo.NomDUsage, tx_ligestmembrelabo_MembreDuLabo.Prenom",		
+				"size" => 1,
+				"minitems" => 0,
+				"maxitems" => 1,
+			)
+		),
+		"Type" => Array (		
+			"exclude" => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.type",			
+			'config' => Array (
+				'type' => 'select',
+				'size' => 1,
+				'maxitems' => 1,
+				'items' => Array (
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.type.these', 'T'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.type.hdr', 'H'),
+				),
+				 'default' => 'T',
+			)
+		),
+		"Resume" => Array (		
+			"exclude" => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.resume",		
+			"config" => Array (
+				"type" => "text",	
+				"cols" => "48",	
+				"rows" => "10",
 			)
 		),
 		"DateDebut" => Array (		
@@ -49,10 +80,10 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 				'default' => '0000-00-00'
 			)
 		),
-		"DateFin" => Array (		
+		"DateSoutenance" => Array (		
 			"exclude" => 1,
 			'l10n_mode' => 'mergeIfNotBlank',
-			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.datefin",		
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.datesoutenance",		
 			"config" => Array (
 				"type"     => "input",
 				"size"     => "10",
@@ -66,10 +97,9 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 			'l10n_mode' => 'mergeIfNotBlank',
 			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.jury",		
 			"config" => Array (
-				"type" => "input",	
-				"size" => "30",	
-				"max" => "255",	
-				"eval" => "trim",
+				"type" => "text",	
+				"cols" => "48",	
+				"rows" => "10",
 			)
 		),
 		"Resultat" => Array (		
@@ -90,32 +120,26 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 				 'default' => 'E',
 			)
 		),
-		"Type" => Array (		
+		"Financement" => Array (		
 			"exclude" => 1,
 			'l10n_mode' => 'mergeIfNotBlank',
-			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.type",			
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement",			
 			'config' => Array (
 				'type' => 'select',
 				'size' => 1,
 				'maxitems' => 1,
 				'items' => Array (
-					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.type.these', 'T'),
-					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.type.hdr', 'H'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.ar', 'ar'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.bcg', 'bcg'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.bcs', 'bcs'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.bpe', 'bpe'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.br', 'br'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.brc', 'brc'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.c', 'c'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.anr', 'anr'),
+					Array('LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.financement.s', 's'),
 				),
-				 'default' => 'T',
-			)
-		),
-		"idMembreLabo" => Array (		
-			"exclude" => 1,
-			'l10n_mode' => 'mergeIfNotBlank',
-			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.idmembrelabo",		
-			"config" => Array (
-				"type" => "select",	
-				"foreign_table" => "tx_ligestmembrelabo_MembreDuLabo",	
-				"foreign_table_where" => "ORDER BY tx_ligestmembrelabo_MembreDuLabo.NomDUsage, tx_ligestmembrelabo_MembreDuLabo.Prenom",		
-				"size" => 1,
-				"minitems" => 0,
-				"maxitems" => 1,
+				 'default' => 'ar',
 			)
 		),
 		'sys_language_uid' => array (		
@@ -156,7 +180,7 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 				"type" => "select",
 				"foreign_table" => "tx_ligesttheses_Dirige",	
 				"foreign_table_where" => "AND tx_ligesttheses_Dirige.idTheseHDR=###THIS_UID### ORDER BY tx_ligesttheses_Dirige.DateDebut DESC",
-				"size" => 1,
+				"size" => 6,
 				"minitems" => 0,
 				"maxitems" => 1,
 				"wizards" => Array(
@@ -165,29 +189,108 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 					"add" => Array(
 						"type" => "popup",
 						"title" => "Create new record",
+						"notNewRecords" => 1,
+						"script" => t3lib_extMgm::extRelPath("li_gest_membre_labo")."wizard/add.php",
 						"icon" => "add.gif",
 						"params" => Array(
-							"table"=>"tx_ligesttheses_Dirige",
-							'pid' => '###CURRENT_PID###',
-							"setValue" => "prepend"
+							"table"			=> "tx_ligesttheses_Dirige",
+							"champ"			=> "idTheseHDR",
+							"lien"			=> Array('tx_ligestmembrelabo_MembreDuLabo')
 						),
-						"script" => "wizard_add.php",
 						"JSopenParams" => "height=350,width=580,status=0,menubar=0,scrollbars=1",
 					),
 					"edit" => Array(
 						"type" => "popup",
 						"title" => "Edit",
+						"notNewRecords" => 1,
 						"script" => "wizard_edit.php",
 						"popup_onlyOpenIfSelected" => 1,
 						"icon" => "edit2.gif",
 						"JSopenParams" => "height=350,width=580,status=0,menubar=0,scrollbars=1",
+					),
+					"del" => Array(
+						"title" => "Delete record",
+						"type" => "popup",
+						"notNewRecords" => 1,
+						"icon" => "clearout.gif",
+						"popup_onlyOpenIfSelected" => 1,
+						'params' => Array(
+							'table'=>'tx_ligesttheses_Dirige',
+						),
+						"script" => t3lib_extMgm::extRelPath("li_gest_membre_labo")."wizard/delete.php",
+						"JSopenParams" => "height=1,width=1,status=0,menubar=0,scrollbars=1",
+					),
+					"reload" => Array(
+						"title" => "Refresh",
+						"type" => "popup",
+						"notNewRecords" => 1,
+						"icon" => "refresh_n.gif",
+						"script" => t3lib_extMgm::extRelPath("li_gest_membre_labo")."wizard/reload.php",
+						"JSopenParams" => "height=1,width=1,status=0,menubar=0,scrollbars=1",
+					),
+				),
+			),
+		),
+"Afficher_Cotutelle" => Array (
+			"exclude" => 1,
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR.afficherCotutelle",		
+			"config" => Array (
+				"type" => "select",
+				"foreign_table" => "tx_ligesttheses_Cotutelle",	
+				"foreign_table_where" => "AND tx_ligesttheses_Cotutelle.idTheseHDR=###THIS_UID### ORDER BY tx_ligesttheses_Cotutelle.NomCotutelle, tx_ligesttheses_Cotutelle.PrenomCotutelle",
+				"size" => 6,
+				"minitems" => 0,
+				"maxitems" => 1,
+				"wizards" => Array(
+					"_PADDING" => 2,
+					"_VERTICAL" => 1,
+					"add" => Array(
+						"type" => "popup",
+						"title" => "Create new record",
+						"notNewRecords" => 1,
+						"script" => t3lib_extMgm::extRelPath("li_gest_membre_labo")."wizard/add.php",
+						"icon" => "add.gif",
+						"params" => Array(
+							"table"			=> "tx_ligesttheses_Cotutelle",
+							"champ"			=> "idTheseHDR"
+						),
+						"JSopenParams" => "height=350,width=580,status=0,menubar=0,scrollbars=1",
+					),
+					"edit" => Array(
+						"type" => "popup",
+						"title" => "Edit",
+						"notNewRecords" => 1,
+						"script" => "wizard_edit.php",
+						"popup_onlyOpenIfSelected" => 1,
+						"icon" => "edit2.gif",
+						"JSopenParams" => "height=350,width=580,status=0,menubar=0,scrollbars=1",
+					),
+					"del" => Array(
+						"title" => "Delete record",
+						"type" => "popup",
+						"notNewRecords" => 1,
+						"icon" => "clearout.gif",
+						"popup_onlyOpenIfSelected" => 1,
+						'params' => Array(
+							'table'=>'tx_ligesttheses_Cotutelle',
+						),
+						"script" => t3lib_extMgm::extRelPath("li_gest_membre_labo")."wizard/delete.php",
+						"JSopenParams" => "height=1,width=1,status=0,menubar=0,scrollbars=1",
+					),
+					"reload" => Array(
+						"title" => "Refresh",
+						"type" => "popup",
+						"notNewRecords" => 1,
+						"icon" => "refresh_n.gif",
+						"script" => t3lib_extMgm::extRelPath("li_gest_membre_labo")."wizard/reload.php",
+						"JSopenParams" => "height=1,width=1,status=0,menubar=0,scrollbars=1",
 					),
 				),
 			),
 		),
 	),
 	"types" => array (
-		"0" => array("showitem" => "hidden;;1;;1-1-1, sys_language_uid, l18n_parent, l18n_diffsource, Titre, Description, DateDebut, DateFin, Jury, Resultat, Type, idMembreLabo,Afficher_Dirige")
+		"0" => array("showitem" => "hidden;;1;;1-1-1, sys_language_uid, l18n_parent, l18n_diffsource, Titre, idMembreLabo, Type, Resume, DateDebut, DateSoutenance, Jury, Resultat, Financement, Afficher_Dirige, Afficher_Cotutelle")
 	),
 	"palettes" => array (
 		"1" => array("showitem" => "")
@@ -195,11 +298,13 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 );
 
 
-
+// ******************************************************************
+// Création du formulaire pour la table tx_ligesttheses_Dirige
+// ******************************************************************
 $TCA["tx_ligesttheses_Dirige"] = array (
 	"ctrl" => $TCA["tx_ligesttheses_Dirige"]["ctrl"],
 	"interface" => array (
-		"showRecordFieldList" => "hidden,idMembreLabo,idTheseHDR,CoefficientDEncadrement,EstDirecteur,DateDebut,DateFin"
+		"showRecordFieldList" => "hidden,idTheseHDR,idMembreLabo,CoefficientDEncadrement,EstDirecteur,DateDebut,DateFin"
 	),
 	"feInterface" => $TCA["tx_ligesttheses_Dirige"]["feInterface"],
 	"columns" => array (
@@ -211,19 +316,6 @@ $TCA["tx_ligesttheses_Dirige"] = array (
 				'default' => '0'
 			)
 		),
-		"idMembreLabo" => Array (		
-			"exclude" => 1,
-			'l10n_mode' => 'mergeIfNotBlank',
-			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_Dirige.idmembrelabo",		
-			"config" => Array (
-				"type" => "select",	
-				"foreign_table" => "tx_ligestmembrelabo_MembreDuLabo",	
-				"foreign_table_where" => "ORDER BY tx_ligestmembrelabo_MembreDuLabo.NomDUsage, tx_ligestmembrelabo_MembreDuLabo.Prenom",		
-				"size" => 1,
-				"minitems" => 0,
-				"maxitems" => 1,
-			)
-		),
 		"idTheseHDR" => Array (		
 			"exclude" => 1,
 			'l10n_mode' => 'mergeIfNotBlank',
@@ -232,6 +324,19 @@ $TCA["tx_ligesttheses_Dirige"] = array (
 				"type" => "select",	
 				"foreign_table" => "tx_ligesttheses_TheseHDR",	
 				"foreign_table_where" => "AND tx_ligesttheses_TheseHDR.sys_language_uid=0 ORDER BY tx_ligesttheses_TheseHDR.Titre",	
+				"size" => 1,
+				"minitems" => 0,
+				"maxitems" => 1,
+			)
+		),
+		"idMembreLabo" => Array (		
+			"exclude" => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_Dirige.idmembrelabo",		
+			"config" => Array (
+				"type" => "select",	
+				"foreign_table" => "tx_ligestmembrelabo_MembreDuLabo",	
+				"foreign_table_where" => "ORDER BY tx_ligestmembrelabo_MembreDuLabo.NomDUsage, tx_ligestmembrelabo_MembreDuLabo.Prenom",		
 				"size" => 1,
 				"minitems" => 0,
 				"maxitems" => 1,
@@ -285,10 +390,83 @@ $TCA["tx_ligesttheses_Dirige"] = array (
 		),
 	),
 	"types" => array (
-		"0" => array("showitem" => "hidden;;1;;1-1-1, idMembreLabo, idTheseHDR, CoefficientDEncadrement, EstDirecteur, DateDebut, DateFin")
+		"0" => array("showitem" => "hidden;;1;;1-1-1, idTheseHDR, idMembreLabo, CoefficientDEncadrement, EstDirecteur, DateDebut, DateFin")
 	),
 	"palettes" => array (
 		"1" => array("showitem" => "")
 	)
 );
+
+// ******************************************************************
+// Création du formulaire pour la table tx_ligesttheses_Cotutelle
+// ******************************************************************
+$TCA["tx_ligesttheses_Cotutelle"] = array (
+	"ctrl" => $TCA["tx_ligesttheses_Cotutelle"]["ctrl"],
+	"interface" => array (
+		"showRecordFieldList" => "hidden, idTheseHDR, NomCotutelle, PrenomCotutelle, AdresseCotutelle"
+	),
+	"feInterface" => $TCA["tx_ligesttheses_Dirige"]["feInterface"],
+	"columns" => array (
+		'hidden' => array (		
+			'exclude' => 1,
+			'label'   => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
+			'config'  => array (
+				'type'    => 'check',
+				'default' => '0'
+			)
+		),
+		"idTheseHDR" => Array (		
+			"exclude" => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_Cotutelle.idthesehdr",		
+			"config" => Array (
+				"type" => "select",	
+				"foreign_table" => "tx_ligesttheses_TheseHDR",	
+				"foreign_table_where" => "AND tx_ligesttheses_TheseHDR.sys_language_uid=0 ORDER BY tx_ligesttheses_TheseHDR.Titre",	
+				"size" => 1,
+				"minitems" => 0,
+				"maxitems" => 1,
+			)
+		),
+		"NomCotutelle" => Array (		
+			"exclude" => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_Cotutelle.NomCotutelle",		
+			"config" => Array (
+				"type" => "input",	
+				"size" => "30",	
+				"max" => "255",	
+				"eval" => "required,trim",
+			)
+		),
+		"PrenomCotutelle" => Array (		
+			"exclude" => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_Cotutelle.PrenomCotutelle",		
+			"config" => Array (
+				"type" => "input",	
+				"size" => "30",	
+				"max" => "255",	
+				"eval" => "trim",
+			)
+		),
+		"AdresseCotutelle" => Array (		
+			"exclude" => 1,
+			'l10n_mode' => 'mergeIfNotBlank',
+			"label" => "LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_Cotutelle.AdresseCotutelle",		
+			"config" => Array (
+				"type" => "text",	
+				"cols" => "48",	
+				"rows" => "10",
+			)
+		),
+	),
+	"types" => array (
+		"0" => array("showitem" => "hidden;;1;;1-1-1, idTheseHDR, NomCotutelle, PrenomCotutelle, AdresseCotutelle")
+	),
+	"palettes" => array (
+		"1" => array("showitem" => "")
+	)
+);
+
 ?>

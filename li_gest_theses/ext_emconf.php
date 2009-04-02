@@ -11,8 +11,8 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'Managing Thesis',
-	'description' => 'Insert a list of thesis',
+	'title' => 'Managing Thesis/HDR',
+	'description' => 'Insert a list of thesis/HDR',
 	'category' => 'plugin',
 	'author' => 'Bruno Gallet',
 	'author_email' => 'gallet.bruno@gmail.com',
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '0.0.0',
+	'version' => '1.0.0',
 	'constraints' => array(
 		'depends' => array(
 		),
