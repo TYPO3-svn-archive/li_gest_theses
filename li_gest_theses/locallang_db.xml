@@ -159,7 +159,7 @@
 			<label index="tx_ligesttheses_TheseHDR.idmembrelabo">Auteur</label>
 			<label index="tx_ligesttheses_TheseHDR.afficherdirige">Membres qui dirigent cette thèse/HDR</label>
 			<label index="tx_ligesttheses_TheseHDR.afficherCotutelle">Cotutelles cette thèse/HDR</label>
-			<label index="tx_ligesttheses_Dirige">Direction de thèses/HDR</label>
+			<label index="tx_ligesttheses_Dirige">Association: Direction de thèses/HDR</label>
 			<label index="tx_ligesttheses_Dirige.idmembrelabo">Encadrant</label>
 			<label index="tx_ligesttheses_Dirige.idthesehdr">Thèse/HDR encadrée</label>
 			<label index="tx_ligesttheses_Dirige.coefficientdencadrement">Le coefficient d'encadrement exprimé en %</label>
@@ -168,7 +168,7 @@
 			<label index="tx_ligesttheses_Dirige.estdirecteur.oui">Oui</label>
 			<label index="tx_ligesttheses_Dirige.datedebut">Date de début (au format: aaaa-mm-jj)</label>
 			<label index="tx_ligesttheses_Dirige.datefin">Date de fin (au format: aaaa-mm-jj)</label>
-			<label index="tx_ligesttheses_Cotutelle">Cotutelle</label>
+			<label index="tx_ligesttheses_Cotutelle">Association: Cotutelle</label>
 			<label index="tx_ligesttheses_Cotutelle.idTheseHDR">Cotutelle</label>
 			<label index="tx_ligesttheses_Cotutelle.NomCotutelle">Nom</label>
 			<label index="tx_ligesttheses_Cotutelle.PrenomCotutelle">Prénom</label>

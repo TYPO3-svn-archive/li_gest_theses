@@ -1,0 +1,8 @@
+/// <summary>
+/// @mainpage Gestion de theses/HDR
+/// @section s_1 Introduction
+/// 
+/// Cette extension permet de créer une base de données permettant de gérer un ensemble de thèses/HDR à partir de formulaires et d'afficher une liste de thèses/HDR suivant certaines contraintes choisies par lors de la configuration de l'extension.
+///
+/// Attention: cette extension peut être utilisée uniquement si l'extension de gestion de membres est installée!
+/// </summary>
