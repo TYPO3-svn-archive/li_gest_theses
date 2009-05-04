@@ -110,7 +110,7 @@ class tx_ligesttheses_pi1 extends tslib_pibase {
 				//Requête pour trouver les infos du parent
 				$select_fields_uid = $table.'.uid, '.$table.'.sys_language_uid, '.$table.'.'.$nom_champ;
 				$from_table_uid = $table;
-				$where_clause_uid = $table.'.uid='.$pid_parent.' AND '.$table.'.deleted<>1';
+				$where_clause_uid = $table.'.uid='.$uid_parent.' AND '.$table.'.deleted<>1';
 				$groupBy_uid = '';
 				$orderBy_uid = '';
 				$limit_uid = '';
