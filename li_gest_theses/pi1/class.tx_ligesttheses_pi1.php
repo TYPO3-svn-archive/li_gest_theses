@@ -537,9 +537,8 @@ class tx_ligesttheses_pi1 extends tslib_pibase {
 		$groupBy = '';
 		$orderBy = 'champ1';
 		$limit = '';
-		$tryMemcached = '';
 
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields, $from_table, $where_clause, $groupBy, $orderBy, $tryMemcached);
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($select_fields, $from_table, $where_clause, $groupBy, $orderBy, $limit);
 
 		while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))
 		{
