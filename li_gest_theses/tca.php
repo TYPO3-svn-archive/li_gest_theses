@@ -192,7 +192,7 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 				"foreign_table_where" => "AND tx_ligesttheses_Dirige.idTheseHDR=###THIS_UID### ORDER BY tx_ligesttheses_Dirige.DateDebut DESC",
 				"size" => 6,
 				"minitems" => 0,
-				"maxitems" => 1,
+				"maxitems" => 0,
 				"wizards" => Array(
 					"_PADDING" => 2,
 					"_VERTICAL" => 1,
@@ -244,7 +244,7 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 				"foreign_table_where" => "AND tx_ligesttheses_Cotutelle.idTheseHDR=###THIS_UID### ORDER BY tx_ligesttheses_Cotutelle.NomCotutelle, tx_ligesttheses_Cotutelle.PrenomCotutelle",
 				"size" => 6,
 				"minitems" => 0,
-				"maxitems" => 1,
+				"maxitems" => 0,
 				"wizards" => Array(
 					"_PADDING" => 2,
 					"_VERTICAL" => 1,

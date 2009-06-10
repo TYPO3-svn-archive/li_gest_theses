@@ -13,7 +13,7 @@ $tempColumns = Array (
 			"foreign_table_where" => "AND tx_ligesttheses_TheseHDR.idMembreLabo=###THIS_UID### AND tx_ligesttheses_TheseHDR.idMembreLabo!=0 AND tx_ligesttheses_TheseHDR.sys_language_uid=0 ORDER BY tx_ligesttheses_TheseHDR.DateDebut DESC",
 			"size" => 6,
 			"minitems" => 0,
-			"maxitems" => 1,
+			"maxitems" => 0,
 			"wizards" => Array(
 				"_PADDING" => 2,
 				"_VERTICAL" => 1,
@@ -62,7 +62,7 @@ $tempColumns = Array (
 			"foreign_table_where" => "AND tx_ligesttheses_Dirige.idMembreLabo=###THIS_UID### AND tx_ligesttheses_Dirige.idMembreLabo!=0 ORDER BY tx_ligesttheses_Dirige.DateDebut DESC",
 			"size" => 6,
 			"minitems" => 0,
-			"maxitems" => 1,
+			"maxitems" => 0,
 			"wizards" => Array(
 				"_PADDING" => 2,
 				"_VERTICAL" => 1,
