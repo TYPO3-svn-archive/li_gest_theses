@@ -205,7 +205,9 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 						"params" => Array(
 							"table"			=> "tx_ligesttheses_Dirige",
 							"champ"			=> "idTheseHDR",
-							"lien"			=> Array('tx_ligestmembrelabo_MembreDuLabo')
+							"lien"			=> Array('tx_ligestmembrelabo_MembreDuLabo'),
+							"date_prov"		=> 'DateDebut', // Date que l'on va copier
+							"date_champ"	=> 'DateDebut' // Champ où l'on veut copier la date
 						),
 						"JSopenParams" => "height=350,width=580,status=0,menubar=0,scrollbars=1",
 					),
