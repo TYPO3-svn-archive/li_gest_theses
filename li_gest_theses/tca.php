@@ -16,7 +16,7 @@ $financement = '';
 if($admin == "1")
 {
 	$these = 'hidden;;1;;1-1-1,';
-	$dirige = 'hidden;;1;;1-1-1, idTheseHDR,';
+	$dirige = 'hidden;;1;;1-1-1,';
 	$cotutelle = 'hidden;;1;;1-1-1, idTheseHDR,';
 	$financement = 'hidden;;1;;1-1-1, ';
 }
@@ -385,7 +385,7 @@ $TCA["tx_ligesttheses_Dirige"] = array (
 		),
 	),
 	"types" => array (
-		"0" => array("showitem" => $dirige."idMembreLabo, CoefficientDEncadrement, EstDirecteur, DateDebut, DateFin")
+		"0" => array("showitem" => $dirige." idTheseHDR, idMembreLabo, CoefficientDEncadrement, EstDirecteur, DateDebut, DateFin")
 	),
 	"palettes" => array (
 		"1" => array("showitem" => "")

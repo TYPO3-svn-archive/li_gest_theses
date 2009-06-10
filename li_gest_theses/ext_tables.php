@@ -10,7 +10,7 @@ $tempColumns = Array (
 		"config" => Array (
 			"type" => "select",
 			"foreign_table" => "tx_ligesttheses_TheseHDR",	
-			"foreign_table_where" => "AND tx_ligesttheses_TheseHDR.idMembreLabo=###THIS_UID### AND tx_ligesttheses_TheseHDR.sys_language_uid=0 ORDER BY tx_ligesttheses_TheseHDR.DateDebut DESC",
+			"foreign_table_where" => "AND tx_ligesttheses_TheseHDR.idMembreLabo=###THIS_UID### AND tx_ligesttheses_TheseHDR.idMembreLabo!=0 AND tx_ligesttheses_TheseHDR.sys_language_uid=0 ORDER BY tx_ligesttheses_TheseHDR.DateDebut DESC",
 			"size" => 6,
 			"minitems" => 0,
 			"maxitems" => 1,
@@ -59,7 +59,7 @@ $tempColumns = Array (
 		"config" => Array (
 			"type" => "select",
 			"foreign_table" => "tx_ligesttheses_Dirige",	
-			"foreign_table_where" => "AND tx_ligesttheses_Dirige.idMembreLabo=###THIS_UID### ORDER BY tx_ligesttheses_Dirige.DateDebut DESC",
+			"foreign_table_where" => "AND tx_ligesttheses_Dirige.idMembreLabo=###THIS_UID### AND tx_ligesttheses_Dirige.idMembreLabo!=0 ORDER BY tx_ligesttheses_Dirige.DateDebut DESC",
 			"size" => 6,
 			"minitems" => 0,
 			"maxitems" => 1,
@@ -125,8 +125,8 @@ t3lib_extMgm::addToInsertRecords('tx_ligesttheses_TheseHDR');
 $TCA["tx_ligesttheses_TheseHDR"] = array (
 	"ctrl" => array (
 		'title'     => 'LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_TheseHDR',	
-		'label'     => 'Titre, idMembreLabo',
-		'label_alt' => 'Titre, idMembreLabo',
+		'label'     => 'Titre',
+		'label_alt' => '',
 		'label_alt_force' => '1',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
@@ -162,8 +162,8 @@ $TCA["tx_ligesttheses_TheseHDR"] = array (
 $TCA["tx_ligesttheses_Dirige"] = array (
 	"ctrl" => array (
 		'title'     => 'LLL:EXT:li_gest_theses/locallang_db.xml:tx_ligesttheses_Dirige',
-		'label'     => 'idMembreLabo',
-		'label_alt' => '',
+		'label'     => 'idMembreLabo, idTheseHDR',
+		'label_alt' => 'idMembreLabo, idTheseHDR',
 		'label_alt_force' => '1',
 		'tstamp'    => 'tstamp',
 		'crdate'    => 'crdate',
